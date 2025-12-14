@@ -60,6 +60,12 @@
               'breathe': 'breathe 4s ease-in-out infinite',
               'fade-in-out': 'fadeInOut 4s ease-in-out infinite', // New Fade Animation
               'zoom-in': 'zoomIn 10s ease-out forwards', // Transition Zoom
+              'glitch': 'glitch 1s linear infinite', // Admin Boss Effect
+              'scanline': 'scanline 8s linear infinite', // Admin Boss Effect
+              // Gacha Animations
+              'gacha-shake': 'gachaShake 0.5s ease-in-out infinite',
+              'gacha-rays': 'gachaRays 20s linear infinite',
+              'item-pop': 'itemPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
             },
             keyframes: {
               float: {
@@ -73,6 +79,10 @@
               fadeIn: {
                 '0%': { opacity: '0', transform: 'translateY(10px)' },
                 '100%': { opacity: '1', transform: 'translateY(0)' },
+              },
+              fadeOut: {
+                '0%': { opacity: '1' },
+                '100%': { opacity: '0' },
               },
               shake: {
                 '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
@@ -102,6 +112,31 @@
               zoomIn: {
                 '0%': { transform: 'scale(1)', opacity: '0.8' },
                 '100%': { transform: 'scale(1.1)', opacity: '1' },
+              },
+              glitch: {
+                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
+                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
+                '62%': { transform: 'translate(0,0) skew(5deg)' },
+              },
+              scanline: {
+                '0%': { transform: 'translateY(-100%)' },
+                '100%': { transform: 'translateY(100%)' }
+              },
+              gachaShake: {
+                '0%': { transform: 'rotate(0deg) translate(0, 0)' },
+                '25%': { transform: 'rotate(-10deg) translate(-5px, 0)' },
+                '50%': { transform: 'rotate(10deg) translate(5px, 0)' },
+                '75%': { transform: 'rotate(-10deg) translate(-5px, 0)' },
+                '100%': { transform: 'rotate(0deg) translate(0, 0)' }
+              },
+              gachaRays: {
+                '0%': { transform: 'rotate(0deg)' },
+                '100%': { transform: 'rotate(360deg)' }
+              },
+              itemPop: {
+                '0%': { transform: 'scale(0)', opacity: '0' },
+                '80%': { transform: 'scale(1.1)', opacity: '1' },
+                '100%': { transform: 'scale(1)', opacity: '1' }
               }
             }
           }
@@ -149,6 +184,11 @@
       .enrage-vignette {
           animation: heartbeat-red 1s infinite;
       }
+
+      /* Admin Boss Styles */
+      .admin-glitch-text {
+        text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9;
+      }
     </style>
 
   <script type="importmap">
@@ -161,7 +201,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/Ethereal-Tower-RPG/assets/index-Bu4olBd4.js"></script>
+  <script type="module" crossorigin src="/Ethereal-Tower-RPG/assets/index-BS_-B3HS.js"></script>
 </head>
   <body class="bg-stone-950 text-stone-200 font-sans antialiased overflow-hidden selection:bg-gold-600 selection:text-white parchment-bg">
     <div id="root"></div>
