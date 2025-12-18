@@ -66,6 +66,12 @@
               'gacha-shake': 'gachaShake 0.5s ease-in-out infinite',
               'gacha-rays': 'gachaRays 20s linear infinite',
               'item-pop': 'itemPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              // Combat VFX
+              'float-up': 'floatUp 0.8s ease-out forwards',
+              'crit-scale': 'critScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+              'slash': 'slash 0.15s ease-out forwards',
+              'flash-white': 'flashWhite 0.2s ease-out forwards',
+              'flash-green': 'flashGreen 0.5s ease-out forwards', // New Healing Flash
             },
             keyframes: {
               float: {
@@ -137,6 +143,31 @@
                 '0%': { transform: 'scale(0)', opacity: '0' },
                 '80%': { transform: 'scale(1.1)', opacity: '1' },
                 '100%': { transform: 'scale(1)', opacity: '1' }
+              },
+              floatUp: {
+                '0%': { transform: 'translateY(0) scale(0.5)', opacity: '0' },
+                '20%': { transform: 'translateY(-20px) scale(1.2)', opacity: '1' },
+                '100%': { transform: 'translateY(-60px) scale(1)', opacity: '0' }
+              },
+              critScale: {
+                '0%': { transform: 'scale(0.5) rotate(-15deg)', opacity: '0' },
+                '50%': { transform: 'scale(1.5) rotate(0deg)', opacity: '1' },
+                '100%': { transform: 'scale(1) rotate(0deg)', opacity: '0' }
+              },
+              slash: {
+                '0%': { transform: 'scaleX(0)', opacity: '0' },
+                '30%': { transform: 'scaleX(1)', opacity: '1' },
+                '100%': { transform: 'scaleX(1.1) scaleY(0.5)', opacity: '0' }
+              },
+              flashWhite: {
+                '0%': { filter: 'brightness(1)' },
+                '20%': { filter: 'brightness(10) contrast(200%) grayscale(100%)' }, // Extreme flash
+                '100%': { filter: 'brightness(1)' }
+              },
+              flashGreen: {
+                '0%': { opacity: '0', backgroundColor: 'transparent' },
+                '20%': { opacity: '0.3', backgroundColor: '#22c55e' }, // green-500
+                '100%': { opacity: '0', backgroundColor: 'transparent' }
               }
             }
           }
@@ -171,6 +202,16 @@
       .text-shadow {
         text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
       }
+      
+      /* Heavy stroke for damage numbers */
+      .damage-text-shadow {
+        text-shadow: 
+          -1px -1px 0 #000,  
+           1px -1px 0 #000,
+          -1px  1px 0 #000,
+           1px  1px 0 #000,
+           2px 2px 5px rgba(0,0,0,0.8);
+      }
 
       .gold-text-shadow {
         text-shadow: 0px 0px 10px rgba(250, 176, 5, 0.3);
@@ -201,7 +242,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/Ethereal-Tower-RPG/assets/index-DLZat7Xl.js"></script>
+  <script type="module" crossorigin src="/Ethereal-Tower-RPG/assets/index-B8-zKFRH.js"></script>
 </head>
   <body class="bg-stone-950 text-stone-200 font-sans antialiased overflow-hidden selection:bg-gold-600 selection:text-white parchment-bg">
     <div id="root"></div>
