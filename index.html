@@ -15,10 +15,6 @@
       // Anti-Inspection Script
       document.addEventListener('contextmenu', event => event.preventDefault());
       
-      // Optional: Log warning to console for curious users
-      console.log("%cStop!", "color: red; font-size: 30px; font-weight: bold;");
-      console.log("%cThis is a browser game feature. Modifying code may break your save file.", "font-size: 14px;");
-
       tailwind.config = {
         theme: {
           extend: {
@@ -28,207 +24,78 @@
               fantasy: ['Cinzel', 'serif'],
             },
             colors: {
-              // Custom Fantasy Palette
-              parchment: {
-                100: '#f5f5dc',
-                200: '#ebeebb',
-                800: '#5c5038',
-                900: '#3d3423',
-              },
-              gold: {
-                100: '#fff9c4',
-                400: '#fcc419',
-                500: '#fab005',
-                600: '#e67700', // Dark Gold
-                900: '#5c3a00',
-              },
-              stone: {
-                800: '#292524',
-                900: '#1c1917',
-                950: '#0c0a09',
-              }
+              parchment: { 100: '#f5f5dc', 200: '#ebeebb', 800: '#5c5038', 900: '#3d3423' },
+              gold: { 100: '#fff9c4', 400: '#fcc419', 500: '#fab005', 600: '#e67700', 900: '#5c3a00' },
+              stone: { 800: '#292524', 900: '#1c1917', 950: '#0c0a09' }
             },
             animation: {
               'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'pulse-fast': 'pulse 0.6s cubic-bezier(0.4, 0, 0.6, 1) infinite', // New: Enrage Pulse
               'float': 'float 3s ease-in-out infinite',
-              'glow': 'glow 2s ease-in-out infinite alternate',
-              'fade-in-slow': 'fadeIn 2s ease-in forwards 1s', // 1s delay
-              'shake': 'shake 0.5s cubic-bezier(.36,.07,.19,.97) both', 
-              'shake-hard': 'shakeHard 0.4s cubic-bezier(.36,.07,.19,.97) both', // New: Hard Shake
-              'rise': 'rise 10s infinite linear', // Added for Ash/Embers
+              'fade-in-slow': 'fadeIn 2s ease-in forwards 1s',
+              'shake-hard': 'shakeHard 0.4s cubic-bezier(.36,.07,.19,.97) both',
+              'rise': 'rise 10s infinite linear',
               'breathe': 'breathe 4s ease-in-out infinite',
-              'fade-in-out': 'fadeInOut 4s ease-in-out infinite', // New Fade Animation
-              'zoom-in': 'zoomIn 10s ease-out forwards', // Transition Zoom
-              'glitch': 'glitch 1s linear infinite', // Admin Boss Effect
-              'scanline': 'scanline 8s linear infinite', // Admin Boss Effect
-              // Gacha Animations
-              'gacha-shake': 'gachaShake 0.5s ease-in-out infinite',
               'gacha-rays': 'gachaRays 20s linear infinite',
+              'gacha-ray-burst': 'gachaRayBurst 1.8s ease-out forwards',
               'item-pop': 'itemPop 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-              // Combat VFX
               'float-up': 'floatUp 0.8s ease-out forwards',
               'crit-scale': 'critScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
-              'slash': 'slash 0.15s ease-out forwards',
+              'slash': 'slash 0.2s ease-out forwards',
+              'shoot-up': 'shootUp 0.15s ease-in forwards',
+              'pierce': 'pierce 0.2s ease-out forwards',
               'flash-white': 'flashWhite 0.2s ease-out forwards',
-              'flash-green': 'flashGreen 0.5s ease-out forwards', // New Healing Flash
+              'pulse-fast': 'pulse 0.4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              'gacha-shake': 'gachaShake 0.5s ease-in-out infinite',
             },
             keyframes: {
-              float: {
-                '0%, 100%': { transform: 'translateY(0)' },
-                '50%': { transform: 'translateY(-5px)' },
-              },
-              glow: {
-                'from': { boxShadow: '0 0 5px #e67700' },
-                'to': { boxShadow: '0 0 20px #fcc419' },
-              },
-              fadeIn: {
-                '0%': { opacity: '0', transform: 'translateY(10px)' },
-                '100%': { opacity: '1', transform: 'translateY(0)' },
-              },
-              fadeOut: {
-                '0%': { opacity: '1' },
-                '100%': { opacity: '0' },
-              },
-              shake: {
-                '10%, 90%': { transform: 'translate3d(-1px, 0, 0)' },
-                '20%, 80%': { transform: 'translate3d(2px, 0, 0)' },
-                '30%, 50%, 70%': { transform: 'translate3d(-4px, 0, 0)' },
-                '40%, 60%': { transform: 'translate3d(4px, 0, 0)' }
-              },
-              shakeHard: {
-                '0%, 100%': { transform: 'translate3d(0, 0, 0)' },
-                '10%, 30%, 50%, 70%, 90%': { transform: 'translate3d(-5px, 0, 0)' },
-                '20%, 40%, 60%, 80%': { transform: 'translate3d(5px, 0, 0)' },
-              },
-              rise: {
-                '0%': { transform: 'translateY(0) translateX(-10px) rotate(0deg)', opacity: '0' },
-                '20%': { opacity: '0.8' },
-                '80%': { opacity: '0.6' },
-                '100%': { transform: 'translateY(-120vh) translateX(10px) rotate(360deg)', opacity: '0' }
-              },
-              breathe: {
-                '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 4px 4px rgba(0,0,0,0.8))' },
-                '50%': { transform: 'scale(1.03)', filter: 'drop-shadow(0 0 20px rgba(251, 191, 36, 0.5))' },
-              },
-              fadeInOut: {
-                '0%, 100%': { opacity: '1' },
-                '50%': { opacity: '0.3' },
-              },
-              zoomIn: {
-                '0%': { transform: 'scale(1)', opacity: '0.8' },
-                '100%': { transform: 'scale(1.1)', opacity: '1' },
-              },
-              glitch: {
-                '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
-                '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
-                '62%': { transform: 'translate(0,0) skew(5deg)' },
-              },
-              scanline: {
-                '0%': { transform: 'translateY(-100%)' },
-                '100%': { transform: 'translateY(100%)' }
+              float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+              fadeIn: { '0%': { opacity: '0', transform: 'translateY(10px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } },
+              shakeHard: { '0%, 100%': { transform: 'translate3d(0, 0, 0)' }, '10%, 30%, 50%, 70%, 90%': { transform: 'translate3d(-5px, 0, 0)' }, '20%, 40%, 60%, 80%': { transform: 'translate3d(5px, 0, 0)' } },
+              rise: { '0%': { transform: 'translateY(0) translateX(-10px) rotate(0deg)', opacity: '0' }, '20%': { opacity: '0.8' }, '80%': { opacity: '0.6' }, '100%': { transform: 'translateY(-120vh) translateX(10px) rotate(360deg)', opacity: '0' } },
+              breathe: { '0%, 100%': { transform: 'scale(1)', filter: 'drop-shadow(0 4px 4px rgba(0,0,0,0.8))' }, '50%': { transform: 'scale(1.03)', filter: 'drop-shadow(0 0 20px rgba(251, 191, 36, 0.5))' } },
+              gachaRays: { '0%': { transform: 'rotate(0deg)' }, '100%': { transform: 'rotate(360deg)' } },
+              gachaRayBurst: {
+                '0%': { opacity: '0', transform: 'scale(0) rotate(var(--rotation))', width: '0px' },
+                '30%': { opacity: '1', width: '20px' },
+                '100%': { opacity: '0', transform: 'scale(4) rotate(var(--rotation))', width: '200px' }
               },
               gachaShake: {
-                '0%': { transform: 'rotate(0deg) translate(0, 0)' },
-                '25%': { transform: 'rotate(-10deg) translate(-5px, 0)' },
-                '50%': { transform: 'rotate(10deg) translate(5px, 0)' },
-                '75%': { transform: 'rotate(-10deg) translate(-5px, 0)' },
-                '100%': { transform: 'rotate(0deg) translate(0, 0)' }
+                '0%, 100%': { transform: 'rotate(0deg) scale(1)' },
+                '25%': { transform: 'rotate(-5deg) scale(1.1)' },
+                '75%': { transform: 'rotate(5deg) scale(1.1)' }
               },
-              gachaRays: {
-                '0%': { transform: 'rotate(0deg)' },
-                '100%': { transform: 'rotate(360deg)' }
-              },
-              itemPop: {
-                '0%': { transform: 'scale(0)', opacity: '0' },
-                '80%': { transform: 'scale(1.1)', opacity: '1' },
-                '100%': { transform: 'scale(1)', opacity: '1' }
-              },
-              floatUp: {
-                '0%': { transform: 'translateY(0) scale(0.5)', opacity: '0' },
-                '20%': { transform: 'translateY(-20px) scale(1.2)', opacity: '1' },
-                '100%': { transform: 'translateY(-60px) scale(1)', opacity: '0' }
-              },
-              critScale: {
-                '0%': { transform: 'scale(0.5) rotate(-15deg)', opacity: '0' },
-                '50%': { transform: 'scale(1.5) rotate(0deg)', opacity: '1' },
-                '100%': { transform: 'scale(1) rotate(0deg)', opacity: '0' }
-              },
+              itemPop: { '0%': { transform: 'scale(0)', opacity: '0' }, '100%': { transform: 'scale(1)', opacity: '1' } },
+              floatUp: { '0%': { transform: 'translateY(0) scale(0.5)', opacity: '0' }, '20%': { transform: 'translateY(-20px) scale(1.2)', opacity: '1' }, '100%': { transform: 'translateY(-60px) scale(1)', opacity: '0' } },
+              critScale: { '0%': { transform: 'scale(0.5)', opacity: '0' }, '50%': { transform: 'scale(1.5)', opacity: '1' }, '100%': { transform: 'scale(1)', opacity: '0' } },
               slash: {
-                '0%': { transform: 'scaleX(0)', opacity: '0' },
-                '30%': { transform: 'scaleX(1)', opacity: '1' },
-                '100%': { transform: 'scaleX(1.1) scaleY(0.5)', opacity: '0' }
+                '0%': { transform: 'translate(-50%, -50%) scaleX(0)', opacity: '0' },
+                '20%': { transform: 'translate(0, 0) scaleX(1.2)', opacity: '1' },
+                '100%': { transform: 'translate(50%, 50%) scaleX(1.5)', opacity: '0' }
               },
-              flashWhite: {
-                '0%': { filter: 'brightness(1)' },
-                '20%': { filter: 'brightness(10) contrast(200%) grayscale(100%)' }, // Extreme flash
-                '100%': { filter: 'brightness(1)' }
+              shootUp: {
+                '0%': { transform: 'translateY(150px) scaleY(0.2)', opacity: '0' },
+                '40%': { transform: 'translateY(0) scaleY(1.5)', opacity: '1' },
+                '100%': { transform: 'translateY(-250px) scaleY(0.5)', opacity: '0' }
               },
-              flashGreen: {
-                '0%': { opacity: '0', backgroundColor: 'transparent' },
-                '20%': { opacity: '0.3', backgroundColor: '#22c55e' }, // green-500
-                '100%': { opacity: '0', backgroundColor: 'transparent' }
-              }
+              pierce: {
+                '0%': { transform: 'scale(0.2) translateZ(0)', opacity: '0' },
+                '50%': { transform: 'scale(1.5) translateZ(0)', opacity: '1' },
+                '100%': { transform: 'scale(2) translateZ(0)', opacity: '0' }
+              },
+              flashWhite: { '0%': { filter: 'brightness(1)' }, '20%': { filter: 'brightness(5)' }, '100%': { filter: 'brightness(1)' } }
             }
           }
         }
       }
     </script>
     <style>
-      .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-      }
-      .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-      }
-      
-      /* Modern Minimalist UI Utilities */
-      .fantasy-border {
-        border: 1px solid #44403c;
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-      }
-      
-      .fantasy-panel {
-        background-color: #171514; /* Flat Stone 925 */
-        border: 1px solid #292524;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-      }
-
-      .parchment-bg {
-        background-color: #0c0a09;
-      }
-
-      .text-shadow {
-        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-      }
-      
-      /* Heavy stroke for damage numbers */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       .damage-text-shadow {
-        text-shadow: 
-          -1px -1px 0 #000,  
-           1px -1px 0 #000,
-          -1px  1px 0 #000,
-           1px  1px 0 #000,
-           2px 2px 5px rgba(0,0,0,0.8);
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000, 2px 2px 5px rgba(0,0,0,0.8);
       }
-
-      .gold-text-shadow {
-        text-shadow: 0px 0px 10px rgba(250, 176, 5, 0.3);
-      }
-      
-      /* Enrage Effect Animation */
-      @keyframes heartbeat-red {
-          0%, 100% { box-shadow: inset 0 0 20px rgba(127, 29, 29, 0.2); }
-          50% { box-shadow: inset 0 0 60px rgba(220, 38, 38, 0.6); }
-      }
-      .enrage-vignette {
-          animation: heartbeat-red 1s infinite;
-      }
-
-      /* Admin Boss Styles */
-      .admin-glitch-text {
-        text-shadow: 2px 0 #ff00c1, -2px 0 #00fff9;
+      .vfx-glow {
+        filter: drop-shadow(0 0 15px var(--vfx-color));
       }
     </style>
 
@@ -242,9 +109,9 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/Ethereal-Tower-RPG/assets/index-B8-zKFRH.js"></script>
+  <script type="module" crossorigin src="/Ethereal-Tower-RPG/assets/index-DHIh3Tbu.js"></script>
 </head>
-  <body class="bg-stone-950 text-stone-200 font-sans antialiased overflow-hidden selection:bg-gold-600 selection:text-white parchment-bg">
+  <body class="bg-stone-950 text-stone-200 font-sans antialiased overflow-hidden selection:bg-gold-600 selection:text-white">
     <div id="root"></div>
   </body>
 </html>
